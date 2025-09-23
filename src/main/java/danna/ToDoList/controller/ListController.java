@@ -39,7 +39,7 @@ public class ListController {
     @GetMapping("/me")
     public ResponseEntity<List<GetListDto>> getListsByUser(
             @AuthenticationPrincipal CustomUserDetails customUserDetails) {
-        return listService.getListsByUser(customUserDetails);
+        return listService.getListsByUser(customUserDetails.getId());
     }
 
     // Crear una nueva lista

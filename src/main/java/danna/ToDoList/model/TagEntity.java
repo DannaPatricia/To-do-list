@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import danna.ToDoList.dto.TagDto.CreateTagDto;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EntityListeners;
@@ -45,8 +46,15 @@ public class TagEntity {
     @ManyToMany(mappedBy="tags")
     private List<TaskEntity> tasks;
 
-    // Constructor
+    // Constructores
     public TagEntity(){}
+    // Para crear una nueva etiqueta
+    public TagEntity(CreateTagDto createTagDto, UserEntity user, TaskEntity task) {
+        this.name = createTagDto.getName();
+        this.user = user;
+        // Solo colocar una tarea en la lista de tareas
+        this.tasks = List.of(task);
+    }
 
     // Getters y Setters
     public Long getId() {return id;}

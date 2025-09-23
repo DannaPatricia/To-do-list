@@ -29,9 +29,7 @@ public class ListService {
     }
 
     // Metodo para obtener todas las listas del usuario, incluidas las compartidas
-    public ResponseEntity<List<GetListDto>> getListsByUser(CustomUserDetails userDetails) {
-        // Obtenemos el id de la sesion del user
-        long userId = userDetails.getId();
+    public ResponseEntity<List<GetListDto>> getListsByUser(Long userId) {
         // obtener todas las listas del user
         List<ListEntity> entities = listRepository.findByUserId(userId);
         // se añaden las listas compartidas a la List de listas del user
