@@ -1,6 +1,5 @@
 package danna.ToDoList.service;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,11 +12,9 @@ import danna.ToDoList.dto.Task.TaskRequestDto;
 import danna.ToDoList.dto.Task.TaskResponseDetailsDto;
 import danna.ToDoList.dto.Task.TaskUpdateDto;
 import danna.ToDoList.model.ListEntity;
-import danna.ToDoList.model.TagEntity;
 import danna.ToDoList.model.TaskEntity;
 import danna.ToDoList.model.UserEntity;
 import danna.ToDoList.repository.ListRepository;
-import danna.ToDoList.repository.TagRepository;
 import danna.ToDoList.repository.TaskRespository;
 import danna.ToDoList.repository.UserRepository;
 import jakarta.transaction.Transactional;
@@ -28,15 +25,12 @@ public class TaskService {
     private final TaskRespository taskRespository;
     private final UserRepository userRepository;
     private final ListRepository listRepository;
-    private final TagRepository tagRepository;
     private static final String RESPONSE_KEY = "message";
 
-    public TaskService(TaskRespository taskRespository, UserRepository userRepository, ListRepository listRepository,
-            TagRepository tagRepository) {
+    public TaskService(TaskRespository taskRespository, UserRepository userRepository, ListRepository listRepository) {
         this.taskRespository = taskRespository;
         this.userRepository = userRepository;
         this.listRepository = listRepository;
-        this.tagRepository = tagRepository;
     }
 
     // Metodo para obtener los detalles de la tarea seleccionada
